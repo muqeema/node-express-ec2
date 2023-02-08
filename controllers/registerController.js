@@ -11,7 +11,7 @@ exports.register = async(req,res,next) => {
     }
 
     try {
-        const [row] = await conn.execute("SELECT `email` FROM `users` WHERE `email`=?", [req.body.email]);
+        const [row] = await conn.execute("SELECT `email` FROM `userDB`.`users` WHERE `email`=?", [req.body.email]);
 
         if (row.length > 0) {
             return res.status(201).json({message: "The email already in use"});
@@ -19,7 +19,7 @@ exports.register = async(req,res,next) => {
 
         const hashPass = await bcrypt.hash(req.body.password, 12);
 
-        const [rows] = await conn.execute("INSERT INTO `users` (`name`,`email`,`password`) VALUES(?,?,?)", [
+        const [rows] = await conn.execute("INSERT INTO `userDB`.`users` (`name`,`email`,`password`) VALUES(?,?,?)", [
             req.body.name,
             req.body.email,
             hashPass
