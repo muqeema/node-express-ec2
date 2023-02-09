@@ -6,7 +6,7 @@ const {register} = require('./controllers/registerController');
 // const {getUserList} = require('./controllers/getUserListController');
 
 router.post('/register', [
-    body('name','The name must be of minimum 3 characters length')
+    body('username','The name must be of minimum 3 characters length')
     .notEmpty()
     .escape()
     .trim()

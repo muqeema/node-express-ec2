@@ -19,10 +19,11 @@ exports.register = async(req,res,next) => {
 
         const hashPass = await bcrypt.hash(req.body.password, 12);
 
-        const [rows] = await conn.execute("INSERT INTO `userDB`.`users` (`name`,`email`,`password`) VALUES(?,?,?)", [
-            req.body.name,
+        const [rows] = await conn.execute("INSERT INTO `userDB`.`users` (`username`,`email`,`password`,`user_type`) VALUES(?,?,?,?)", [
+            req.body.username,
             req.body.email,
-            hashPass
+            hashPass,
+            req.body.user_type
         ]);
 
         if (rows.affectedRows === 1) {
