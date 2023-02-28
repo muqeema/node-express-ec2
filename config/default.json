@@ -1,0 +1,8 @@
+{
+    "app": {
+        "host": "127.0.0.1",
+        "user": "newuser",
+        "database": "userDB",
+        "password": "password1#"
+    }
+}

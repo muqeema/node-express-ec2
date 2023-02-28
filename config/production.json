@@ -1,0 +1,8 @@
+{
+    "app": {
+        "host": "demords.cgm8zwlxccjv.us-east-1.rds.amazonaws.com",
+        "user": "admin",
+        "database": "demo",
+        "password": "admin123"
+    }
+}
