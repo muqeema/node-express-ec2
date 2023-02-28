@@ -8,9 +8,9 @@ exports.register = async(req,res,next) => {
     const errors = validationResult(req);
 
 
-    // if(!errors.isEmpty()) {
-    //     return res.status(422).json({ errors: errors });
-    // }
+    if(!errors.isEmpty()) {
+        return res.status(422).json({ errors: errors });
+    }
 
     //Establish the connection on this request
     connection = connectionRequest()
@@ -25,7 +25,7 @@ exports.register = async(req,res,next) => {
     
     connection.query("SELECT `email` FROM `userDB`.`users` WHERE `email`=?", [req.body.email], function (err, result, fields) {
         if (err) {
-            return res.status(422).json({ errors: err});
+            return res.status(422).json({ err: err});
             console.log(`not successful! ${err}`);
             connection.destroy();
         } else {
