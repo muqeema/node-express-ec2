@@ -13,9 +13,9 @@ const app = express();
 
 app.use(express.json());
 app.use(routes);
-// app.get('/', (req, res) => {
-//     // res.send(`You reached to the server.`)
-// });
+app.get('/test', (req, res) => {
+    res.send(`You reached to the server.`)
+});
 //Handling Errors
 app.use((err, req, res, next) => {
     err.statusCode = err.statusCode || 500;
