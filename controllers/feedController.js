@@ -72,6 +72,7 @@ exports.sendFeed = async(req,res,next) => {
         connection.query("SELECT * FROM `userDB`.`users` WHERE `email`=?", [req.body.email],  function (err, result, fields) {
             if (err) {
                 // If an error occurred, send a generic server failure
+                return res.status(422).json({ errors: err.array() });
                 console.log(`not successful! ${err}`)
                 connection.destroy();
     
@@ -119,6 +120,7 @@ exports.feedList = async(req,res,next) => {
     connection.query("SELECT * FROM `userDB`.`feedTable` ", function (err, result, fields) {
         if (err) {
             // If an error occurred, send a generic server failure
+            return res.status(422).json({ errors: err.array() });
             console.log(`not successful! ${err}`)
             connection.destroy();
 
