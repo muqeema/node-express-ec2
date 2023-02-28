@@ -8,9 +8,9 @@ exports.register = async(req,res,next) => {
     const errors = validationResult(req);
 
 
-    if(!errors.isEmpty()) {
-        return res.status(422).json({ errors: errors });
-    }
+    // if(!errors.isEmpty()) {
+    //     return res.status(422).json({ errors: errors });
+    // }
 
     //Establish the connection on this request
     connection = connectionRequest()
